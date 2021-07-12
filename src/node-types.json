@@ -39,6 +39,11 @@
     }
   },
   {
+    "type": "block_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "element",
     "named": true,
     "fields": {},
@@ -90,6 +95,21 @@
   },
   {
     "type": "expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "expression_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "expression_value",
     "named": true,
     "fields": {}
   },
@@ -163,6 +183,11 @@
     }
   },
   {
+    "type": "subblock_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "tag_name",
     "named": true,
     "fields": {}
@@ -196,23 +221,43 @@
     "named": false
   },
   {
+    "type": "case",
+    "named": false
+  },
+  {
+    "type": "else",
+    "named": false
+  },
+  {
+    "type": "elseif",
+    "named": false
+  },
+  {
+    "type": "for",
+    "named": false
+  },
+  {
+    "type": "if",
+    "named": false
+  },
+  {
+    "type": "match",
+    "named": false
+  },
+  {
     "type": "text",
     "named": true
+  },
+  {
+    "type": "unless",
+    "named": false
   },
   {
     "type": "{",
     "named": false
   },
   {
-    "type": "{...",
-    "named": false
-  },
-  {
-    "type": "{=",
-    "named": false
-  },
-  {
-    "type": "{^",
+    "type": "{#",
     "named": false
   },
   {

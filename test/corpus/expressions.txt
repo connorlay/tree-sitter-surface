@@ -1,0 +1,21 @@
+=================
+Expressions Tests
+=================
+
+<Root>
+  {@message}
+  <Nested class={@class}/>
+</Root>
+
+---
+
+(fragment 
+  (element
+    (start_tag (tag_name))
+    (expression (expression_value))
+    (element
+      (self_closing_tag 
+        (tag_name) 
+        (attribute (attribute_name) 
+        (attribute_value (expression (expression_value))))))
+    (end_tag (tag_name))))

@@ -1,0 +1,23 @@
+============
+Special Tags
+============
+
+<#template></#template>
+<#slot/>
+<#Raw></#Raw>
+<#Markdown></#Markdown>
+---
+
+(fragment
+  (element
+    (start_tag (tag_name))
+    (end_tag (tag_name)))
+  (element
+    (self_closing_tag (tag_name)))
+  (element
+    (start_tag (tag_name))
+    (end_tag (tag_name)))
+  (element
+    (start_tag (tag_name))
+    (end_tag (tag_name)))
+)

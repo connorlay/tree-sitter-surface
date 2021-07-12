@@ -1,0 +1,18 @@
+==========
+Text Tests
+==========
+
+<Root>
+  Hello World!
+  <span>More Text!</span>
+</Root>
+---
+
+(fragment 
+  (element (start_tag (tag_name)) 
+  (text)
+  (element (start_tag (tag_name)) 
+    (text)
+    (end_tag (tag_name)))
+  (end_tag (tag_name)))
+)

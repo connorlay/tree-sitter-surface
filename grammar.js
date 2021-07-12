@@ -7,6 +7,8 @@ module.exports = grammar({
     _node: $ => choice(
       $.element,
       $.text,
+      // $.block,
+      // $.subblock,
       $.expression,
     ),
 
@@ -40,10 +42,28 @@ module.exports = grammar({
       '/>'
     ),
 
-    expression: $ => seq(
-      choice('{', '{=', '{...', '{^'),
-      repeat1($._matched_curly_brackets), 
-      '}'
+    expression: $ => seq( '{', $.expression_value, '}'),
+
+    expression_value: $ => repeat1($._matched_curly_brackets),
+
+    _matched_curly_brackets: $ => choice(
+      seq('{', $._matched_curly_brackets, '}'),
+      /[^{}]+/,
+      '{}'
+    ),
+
+    block: $ => seq(
+      '{#',
+      $.block_name,
+      $.expression,
+      '}',
+    ),
+
+    subblock: $ => seq(
+      '{#',
+      $.subblock_name,
+      optional($.expression),
+      '}',
     ),
 
     attribute: $ => seq(
@@ -53,6 +73,8 @@ module.exports = grammar({
 
     tag_name: $ => /[^<>{}"'/=\s]+/,
     attribute_name: $ => /[^<>{}"'/=\s]+/,
+    block_name: $ => choice('if', 'unless', 'for', 'case'),
+    subblock_name: $ => choice('else', 'elseif', 'match'),
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,
@@ -61,11 +83,6 @@ module.exports = grammar({
       $.expression
     ),
 
-    _matched_curly_brackets: $ => choice(
-      seq('{', $._matched_curly_brackets, '}'),
-      /[^{}]+/,
-      '{}'
-    ),
 
     text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})

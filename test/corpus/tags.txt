@@ -1,0 +1,23 @@
+==========
+Tags Tests
+==========
+
+<Root>
+  <Nested></Nested>
+  <SelfClosing/>
+  <button/>
+</Root>
+
+---
+
+(fragment
+  (element
+    (start_tag (tag_name))
+    (element 
+      (start_tag (tag_name)) 
+      (end_tag (tag_name)))
+    (element
+      (self_closing_tag (tag_name)))
+    (element
+      (self_closing_tag (tag_name)))
+    (end_tag (tag_name))))
