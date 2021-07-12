@@ -1,0 +1,23 @@
+=============
+Surface Tests
+=============
+
+<Root foo={@bar}>
+  <Header name="baz" />
+  Hello {@user}!
+</Root>
+
+---
+
+(fragment
+  (element 
+    (start_tag 
+      (tag_name) 
+      (attribute (attribute_name)
+      (attribute_value (elixir_expression))))
+    (element
+      (self_closing_tag 
+        (tag_name) 
+        (attribute (attribute_name) (attribute_value))))
+    (text)
+    (end_tag (tag_name))))
