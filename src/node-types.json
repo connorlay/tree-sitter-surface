@@ -32,7 +32,7 @@
       "required": false,
       "types": [
         {
-          "type": "elixir_expression",
+          "type": "expression",
           "named": true
         }
       ]
@@ -55,6 +55,10 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "self_closing_tag",
           "named": true
         },
@@ -68,11 +72,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "elixir_expression",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "end_tag",
@@ -90,6 +89,11 @@
     }
   },
   {
+    "type": "expression",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "fragment",
     "named": true,
     "fields": {},
@@ -99,6 +103,10 @@
       "types": [
         {
           "type": "element",
+          "named": true
+        },
+        {
+          "type": "expression",
           "named": true
         },
         {
@@ -121,6 +129,10 @@
           "named": true
         },
         {
+          "type": "expression",
+          "named": true
+        },
+        {
           "type": "tag_name",
           "named": true
         }
@@ -137,6 +149,10 @@
       "types": [
         {
           "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "expression",
           "named": true
         },
         {
@@ -185,6 +201,18 @@
   },
   {
     "type": "{",
+    "named": false
+  },
+  {
+    "type": "{...",
+    "named": false
+  },
+  {
+    "type": "{=",
+    "named": false
+  },
+  {
+    "type": "{^",
     "named": false
   },
   {

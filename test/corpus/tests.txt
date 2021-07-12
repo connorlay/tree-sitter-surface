@@ -5,6 +5,10 @@ Surface Tests
 <Root foo={@bar}>
   <Header name="baz" />
   Hello {@user}!
+
+  I should support embedding {maps = %{"foo" => "bar"}} in text.
+
+  <span {=@class} {...@dynamic_attrs} {^variable}>Woot</span>
 </Root>
 
 ---
@@ -14,10 +18,22 @@ Surface Tests
     (start_tag 
       (tag_name) 
       (attribute (attribute_name)
-      (attribute_value (elixir_expression))))
+      (attribute_value (expression))))
     (element
       (self_closing_tag 
         (tag_name) 
         (attribute (attribute_name) (attribute_value))))
     (text)
+    (expression)
+    (text)
+    (expression)
+    (text)
+    (element 
+      (start_tag 
+        (tag_name) 
+        (expression)
+        (expression)
+        (expression))
+      (text)
+      (end_tag (tag_name)))
     (end_tag (tag_name))))

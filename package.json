@@ -4,7 +4,7 @@
   "description": "Tree-sitter grammar for Surface files (sface)",
   "main": "bindings/node",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/tree-sitter generate && ./node_modules/.bin/tree-sitter test"
   },
   "author": "Clay",
   "license": "MIT",

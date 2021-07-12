@@ -6,7 +6,8 @@ module.exports = grammar({
 
     _node: $ => choice(
       $.element,
-      $.text
+      $.text,
+      $.expression,
     ),
 
     element: $ => choice(
@@ -22,7 +23,7 @@ module.exports = grammar({
     start_tag: $ => seq(
       '<',
       $.tag_name,
-      repeat($.attribute),
+      repeat(choice($.attribute, $.expression)),
       '>'
     ),
 
@@ -35,8 +36,14 @@ module.exports = grammar({
     self_closing_tag: $ => seq(
       '<',
       $.tag_name,
-      repeat($.attribute),
+      repeat(choice($.attribute, $.expression)),
       '/>'
+    ),
+
+    expression: $ => seq(
+      choice('{', '{=', '{...', '{^'),
+      repeat1($._matched_curly_brackets), 
+      '}'
     ),
 
     attribute: $ => seq(
@@ -44,23 +51,21 @@ module.exports = grammar({
       optional(seq('=', $.attribute_value))
     ),
 
-    tag_name: $ => /[^<>"'/=\s]+/,
-    attribute_name: $ => /[^<>"'/=\s]+/,
+    tag_name: $ => /[^<>{}"'/=\s]+/,
+    attribute_name: $ => /[^<>{}"'/=\s]+/,
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,
       seq("'", optional(/[^']+/), "'"),
       seq('"', optional(/[^"]+/), '"'),
-      seq('{', optional($.elixir_expression),'}')
+      $.expression
     ),
 
-    elixir_expression: $ => repeat1($._no_dangling_curly),
-
-    _no_dangling_curly: $ => choice(
-      seq('{', $._no_dangling_curly, '}'),
+    _matched_curly_brackets: $ => choice(
+      seq('{', $._matched_curly_brackets, '}'),
       /[^{}]+/,
       '{}'
     ),
 
-    text: $ => /[^<>\s]([^<>]*[^<>\s])?/,
+    text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})
