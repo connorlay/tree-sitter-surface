@@ -9,15 +9,15 @@ Special Tags
 ---
 
 (fragment
-  (element
+  (tag
     (start_tag (tag_name))
     (end_tag (tag_name)))
-  (element
+  (tag
     (self_closing_tag (tag_name)))
-  (element
+  (tag
     (start_tag (tag_name))
     (end_tag (tag_name)))
-  (element
+  (tag
     (start_tag (tag_name))
     (end_tag (tag_name)))
 )

@@ -1,0 +1,14 @@
+=================
+Comments Tests
+=================
+
+<!-- Hello World  -->
+
+{!-- Look a comment --}
+
+---
+
+(fragment 
+  (public_comment)
+  (private_comment)
+)

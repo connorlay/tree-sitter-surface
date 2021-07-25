@@ -10,10 +10,10 @@ Expressions Tests
 ---
 
 (fragment 
-  (element
+  (tag
     (start_tag (tag_name))
     (expression (expression_value))
-    (element
+    (tag
       (self_closing_tag 
         (tag_name) 
         (attribute (attribute_name) 
