@@ -2,7 +2,9 @@ module.exports = grammar({
   name: 'surface',
 
   rules: {
-    fragment: $ => repeat($._node),
+    fragment: $ => repeat(
+      $._node
+    ),
 
     _node: $ => choice(
       $.tag,
@@ -16,7 +18,9 @@ module.exports = grammar({
     tag: $ => choice(
       seq(
         $.start_tag,
-        repeat($._node),
+        repeat(
+          $._node
+        ),
         $.end_tag
       ),
       $.self_closing_tag,
@@ -24,14 +28,21 @@ module.exports = grammar({
 
     block: $ => seq(
       $.start_block,
-      repeat($._node),
+      repeat(
+        $._node
+      ),
       $.end_block
     ),
 
     start_tag: $ => seq(
       '<',
       $.tag_name,
-      repeat(choice($.attribute, $.expression)),
+      repeat(
+        choice(
+          $.attribute, 
+          $.expression
+        )
+      ),
       '>'
     ),
 
@@ -44,13 +55,24 @@ module.exports = grammar({
     self_closing_tag: $ => seq(
       '<',
       $.tag_name,
-      repeat(choice($.attribute, $.expression)),
+      repeat(
+        choice(
+          $.attribute, 
+          $.expression
+        )
+      ),
       '/>'
     ),
 
-    expression: $ => seq( '{', $.expression_value, '}'),
+    expression: $ => seq(
+      '{', 
+      $.expression_value, 
+      '}'
+    ),
 
-    expression_value: $ => repeat1($._matched_curly_brackets),
+    expression_value: $ => repeat1(
+      $._matched_curly_brackets
+    ),
 
     public_comment: $ => seq(
       '<!--', 
@@ -65,14 +87,20 @@ module.exports = grammar({
     ),
 
     _matched_curly_brackets: $ => choice(
-      seq('{', $._matched_curly_brackets, '}'),
+      seq(
+        '{', 
+        $._matched_curly_brackets, 
+        '}'
+      ),
       /[^{}]+/, // use an external scanner to improve this
       '{}'
     ),
 
     block: $ => seq(
       $.start_block,
-      repeat($._node),
+      repeat(
+        $._node
+      ),
       $.end_block
     ),
 
@@ -91,17 +119,40 @@ module.exports = grammar({
 
     attribute: $ => seq(
       $.attribute_name,
-      optional(seq('=', $.attribute_value))
+      optional(
+        seq(
+          '=', 
+          $.attribute_value
+        )
+      )
     ),
 
     tag_name: $ => /[^\-<>{}!"'/=\s]+/,
+
     attribute_name: $ => /[^<>{}"'/=\s]+/,
-    block_name: $ => choice('if', 'unless', 'for', 'case', 'else', 'elseif', 'match'),
+
+    block_name: $ => choice(
+      'if', 
+      'unless', 
+      'for', 
+      'case', 
+      'else', 
+      'elseif', 
+      'match'
+    ),
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,
-      seq("'", optional(/[^']+/), "'"),
-      seq('"', optional(/[^"]+/), '"'),
+      seq(
+        "'", 
+        optional(/[^']+/), 
+        "'"
+      ),
+      seq(
+        '"', 
+        optional(/[^"]+/), 
+        '"'
+      ),
       $.expression
     ),
 
