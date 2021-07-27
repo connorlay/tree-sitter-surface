@@ -2,9 +2,7 @@ module.exports = grammar({
   name: 'surface',
 
   rules: {
-    fragment: $ => repeat(
-      $._node
-    ),
+    fragment: $ => repeat($._node),
 
     _node: $ => choice(
       $.tag,
@@ -18,9 +16,7 @@ module.exports = grammar({
     tag: $ => choice(
       seq(
         $.start_tag,
-        repeat(
-          $._node
-        ),
+        repeat($._node),
         $.end_tag
       ),
       $.self_closing_tag,
@@ -28,9 +24,7 @@ module.exports = grammar({
 
     block: $ => seq(
       $.start_block,
-      repeat(
-        $._node
-      ),
+      repeat($._node),
       $.end_block
     ),
 
@@ -65,41 +59,61 @@ module.exports = grammar({
     ),
 
     expression: $ => seq(
-      '{', 
-      $.expression_value, 
+      '{',
+      optional(
+        choice(
+          '=',
+          '...',
+          '^',
+        )
+      ),
+      $.expression_value,
       '}'
     ),
 
-    expression_value: $ => repeat1(
-      $._matched_curly_brackets
+    expression_value: $ => choice(
+      /[^{}]+/,
+      '{}',
+      seq(
+        '{',
+        alias($.expression_value, 'expression_value'),
+        '}'
+      ),
     ),
 
     public_comment: $ => seq(
       '<!--', 
-      /[^<>-]+/, // use an external scanner to improve this
+      alias(
+        choice(
+          repeat1(/[^-]+|-/), 
+          $.public_comment
+        ), 
+        'comment'
+      ),
       '-->'
     ),
 
-    private_comment: $ => seq( 
+    private_comment: $ => seq(
       '{!--', 
-      /[^{}-]+/, // use an external scanner to improve this
-      '--}'
-    ),
-
-    _matched_curly_brackets: $ => choice(
-      seq(
-        '{', 
-        $._matched_curly_brackets, 
-        '}'
+      alias(
+        choice(
+          repeat1(
+            /[^-]+|-/
+          ), 
+          $.private_comment
+        ), 
+        'comment'
       ),
-      /[^{}]+/, // use an external scanner to improve this
-      '{}'
+      '--}'
     ),
 
     block: $ => seq(
       $.start_block,
       repeat(
-        $._node
+        choice(
+          $.subblock,
+          $._node
+        )
       ),
       $.end_block
     ),
@@ -107,14 +121,34 @@ module.exports = grammar({
     start_block: $ => seq(
       '{#',
       $.block_name,
-      $.expression_value,
+      optional($.expression_value),
       '}',
+    ),
+
+    block_name: $ => choice(
+      'if', 
+      'unless', 
+      'for', 
+      'case', 
     ),
 
     end_block: $ => seq(
       '{/', 
       $.block_name,
       '}',
+    ),
+
+    subblock: $ => seq(
+      '{#',
+      $.subblock_name,
+      optional($.expression_value),
+      '}',
+    ),
+
+    subblock_name: $ => choice(
+      'else',
+      'elseif',
+      'match'
     ),
 
     attribute: $ => seq(
@@ -130,16 +164,6 @@ module.exports = grammar({
     tag_name: $ => /[^\-<>{}!"'/=\s]+/,
 
     attribute_name: $ => /[^<>{}"'/=\s]+/,
-
-    block_name: $ => choice(
-      'if', 
-      'unless', 
-      'for', 
-      'case', 
-      'else', 
-      'elseif', 
-      'match'
-    ),
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,

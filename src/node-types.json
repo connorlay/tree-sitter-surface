@@ -66,6 +66,10 @@
           "named": true
         },
         {
+          "type": "subblock",
+          "named": true
+        },
+        {
           "type": "tag",
           "named": true
         },
@@ -79,6 +83,11 @@
   {
     "type": "block_name",
     "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comment",
+    "named": false,
     "fields": {}
   },
   {
@@ -242,6 +251,30 @@
     }
   },
   {
+    "type": "subblock",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "expression_value",
+          "named": true
+        },
+        {
+          "type": "subblock_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subblock_name",
+    "named": true,
+    "fields": {}
+  },
+  {
     "type": "tag",
     "named": true,
     "fields": {},
@@ -305,6 +338,10 @@
     "named": false
   },
   {
+    "type": "...",
+    "named": false
+  },
+  {
     "type": "/>",
     "named": false
   },
@@ -326,6 +363,10 @@
   },
   {
     "type": ">",
+    "named": false
+  },
+  {
+    "type": "^",
     "named": false
   },
   {

@@ -1,14 +1,50 @@
-=================
-Comments Tests
-=================
+=============
+Simple Public
+=============
 
-<!-- Hello World  -->
+<!-- Hello World  --->
 
-{!-- Look a comment --}
+---
+(fragment (public_comment))
+
+==============
+Simple Private
+==============
+
+{!-- Hello World --}
 
 ---
 
-(fragment 
-  (public_comment)
-  (private_comment)
-)
+(fragment (private_comment))
+
+=============
+Nested Public
+=============
+
+<!-- <!-- Hello World --> -->
+
+---
+
+(fragment (public_comment))
+
+==============
+Nested Private
+==============
+
+{!-- {!-- Hello World --} --}
+
+---
+
+(fragment (private_comment))
+
+============
+Mixed Nested
+============
+
+<!-- {!-- Hello World --} -->
+
+{!-- <!-- Hello World --> --}
+
+---
+
+(fragment (public_comment) (private_comment))

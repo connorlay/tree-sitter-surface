@@ -1,21 +1,59 @@
 =================
-Expressions Tests
+Simple Expression
 =================
 
-<Root>
-  {@message}
-  <Nested class={@class}/>
-</Root>
+{@hello}
 
 ---
 
-(fragment 
-  (tag
-    (start_tag (tag_name))
-    (expression (expression_value))
-    (tag
-      (self_closing_tag 
-        (tag_name) 
-        (attribute (attribute_name) 
-        (attribute_value (expression (expression_value))))))
-    (end_tag (tag_name))))
+(fragment (expression (expression_value)))
+
+====================
+Shorthand Expression
+====================
+
+{=@hello}
+
+---
+
+(fragment (expression (expression_value)))
+
+==================
+Dynamic Expression
+==================
+
+{...@hello}
+
+---
+
+(fragment (expression (expression_value)))
+
+================
+Quote Expression
+================
+
+{^@hello}
+
+---
+
+(fragment (expression (expression_value)))
+
+===================
+Single Empty Tuple
+===================
+
+{{}}
+
+---
+
+(fragment (expression (expression_value)))
+
+===================
+Nested Empty Tuples
+===================
+
+{{{}}}
+
+---
+
+(fragment (expression (expression_value)))

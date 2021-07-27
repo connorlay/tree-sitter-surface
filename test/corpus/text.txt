@@ -1,18 +1,9 @@
 ==========
-Text Tests
+Plain Text
 ==========
 
-<Root>
-  Hello World!
-  <span>More Text!</span>
-</Root>
+Hello World!
+
 ---
 
-(fragment 
-  (tag (start_tag (tag_name)) 
-  (text)
-  (tag (start_tag (tag_name)) 
-    (text)
-    (end_tag (tag_name)))
-  (end_tag (tag_name)))
-)
+(fragment (text))

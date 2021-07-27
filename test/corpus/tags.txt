@@ -1,23 +1,179 @@
-==========
-Tags Tests
-==========
+========
+HTML Tag
+========
 
-<Root>
-  <Nested></Nested>
-  <SelfClosing/>
-  <button/>
-</Root>
+<div>
+</div>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name))
+  (end_tag (tag_name))
+ )
+)
+
+=====================
+HTML Self-Closing Tag
+=====================
+
+<div/>
 
 ---
 
 (fragment
   (tag
-    (start_tag (tag_name))
-    (tag 
-      (start_tag (tag_name)) 
-      (end_tag (tag_name)))
-    (tag
-      (self_closing_tag (tag_name)))
-    (tag
-      (self_closing_tag (tag_name)))
-    (end_tag (tag_name))))
+    (self_closing_tag (tag_name))
+  )
+)
+
+=============
+Component Tag
+=============
+
+<Root>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name))
+  (end_tag (tag_name))
+ )
+)
+
+==========================
+Component Self-Closing Tag
+==========================
+
+<Root/>
+
+---
+
+(fragment
+  (tag
+    (self_closing_tag (tag_name))
+  )
+)
+
+===========
+Special Tag
+===========
+
+<#slot>
+</#slot>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name))
+  (end_tag (tag_name))
+ )
+)
+
+========================
+Special Self-Closing Tag
+========================
+
+<#slot/>
+
+---
+
+(fragment
+  (tag
+    (self_closing_tag (tag_name))
+  )
+)
+
+==============
+Attribute Tag
+==============
+
+<Root key=value>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name) 
+   (attribute (attribute_name) (attribute_value))
+  )
+  (end_tag (tag_name))
+ )
+)
+
+========================
+Attribute Expression Tag
+========================
+
+<Root key={value}>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name) 
+   (attribute (attribute_name) (attribute_value (expression (expression_value))))
+  )
+  (end_tag (tag_name))
+ )
+)
+
+========================
+Shorthand Expression Tag
+========================
+
+<Root {=key}>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name) 
+   (expression (expression_value))
+  )
+  (end_tag (tag_name))
+ )
+)
+
+========================
+Dynamic Expression Tag
+========================
+
+<Root {...keys}>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name) 
+   (expression (expression_value))
+  )
+  (end_tag (tag_name))
+ )
+)
+
+====================
+Quote Expression Tag
+====================
+
+<Root {^key}>
+</Root>
+
+---
+
+(fragment
+ (tag
+  (start_tag (tag_name) 
+   (expression (expression_value))
+  )
+  (end_tag (tag_name))
+ )
+)
