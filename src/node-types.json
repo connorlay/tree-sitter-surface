@@ -46,19 +46,15 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "end_block",
           "named": true
         },
         {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "private_comment",
-          "named": true
-        },
-        {
-          "type": "public_comment",
           "named": true
         },
         {
@@ -87,7 +83,7 @@
   },
   {
     "type": "comment",
-    "named": false,
+    "named": true,
     "fields": {}
   },
   {
@@ -100,6 +96,21 @@
       "types": [
         {
           "type": "block_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "end_markdown",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "tag_name",
           "named": true
         }
       ]
@@ -153,15 +164,11 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
           "type": "expression",
-          "named": true
-        },
-        {
-          "type": "private_comment",
-          "named": true
-        },
-        {
-          "type": "public_comment",
           "named": true
         },
         {
@@ -174,16 +181,6 @@
         }
       ]
     }
-  },
-  {
-    "type": "private_comment",
-    "named": true,
-    "fields": {}
-  },
-  {
-    "type": "public_comment",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "self_closing_tag",
@@ -222,6 +219,29 @@
         },
         {
           "type": "expression_value",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "start_markdown",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "attribute",
+          "named": true
+        },
+        {
+          "type": "expression",
+          "named": true
+        },
+        {
+          "type": "tag_name",
           "named": true
         }
       ]
@@ -287,6 +307,14 @@
           "named": true
         },
         {
+          "type": "comment",
+          "named": true
+        },
+        {
+          "type": "end_markdown",
+          "named": true
+        },
+        {
           "type": "end_tag",
           "named": true
         },
@@ -295,15 +323,11 @@
           "named": true
         },
         {
-          "type": "private_comment",
-          "named": true
-        },
-        {
-          "type": "public_comment",
-          "named": true
-        },
-        {
           "type": "self_closing_tag",
+          "named": true
+        },
+        {
+          "type": "start_markdown",
           "named": true
         },
         {

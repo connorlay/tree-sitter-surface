@@ -9,6 +9,7 @@
   "author": "Clay",
   "license": "MIT",
   "devDependencies": {
+    "nan": "^2.14.2",
     "tree-sitter-cli": "^0.20.0"
   }
 }

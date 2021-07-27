@@ -9,8 +9,7 @@ module.exports = grammar({
       $.text,
       $.expression,
       $.block,
-      $.public_comment,
-      $.private_comment,
+      $.comment,
     ),
 
     tag: $ => choice(
@@ -20,12 +19,35 @@ module.exports = grammar({
         $.end_tag
       ),
       $.self_closing_tag,
+      seq(
+        $.start_markdown,
+        $.text,
+        $.end_markdown
+      ),
     ),
 
     block: $ => seq(
       $.start_block,
       repeat($._node),
       $.end_block
+    ),
+
+    start_markdown: $ => seq(
+      '<',
+      alias('#Markdown', $.tag_name),
+      repeat(
+        choice(
+          $.attribute, 
+          $.expression
+        )
+      ),
+      '>'
+    ),
+
+    end_markdown: $ => seq(
+      '</',
+      alias('#Markdown', $.tag_name),
+      '>'
     ),
 
     start_tag: $ => seq(
@@ -81,26 +103,31 @@ module.exports = grammar({
       ),
     ),
 
-    public_comment: $ => seq(
+    comment: $ => choice(
+      $._public_comment,
+      $._private_comment,
+    ),
+
+    _public_comment: $ => seq(
       '<!--', 
       alias(
         choice(
           repeat1(/[^-]+|-/), 
-          $.public_comment
+          $._public_comment
         ), 
         'comment'
       ),
       '-->'
     ),
 
-    private_comment: $ => seq(
+    _private_comment: $ => seq(
       '{!--', 
       alias(
         choice(
           repeat1(
             /[^-]+|-/
           ), 
-          $.private_comment
+          $._private_comment
         ), 
         'comment'
       ),
@@ -161,9 +188,6 @@ module.exports = grammar({
       )
     ),
 
-    tag_name: $ => /[^\-<>{}!"'/=\s]+/,
-
-    attribute_name: $ => /[^<>{}"'/=\s]+/,
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,
@@ -179,6 +203,10 @@ module.exports = grammar({
       ),
       $.expression
     ),
+
+    tag_name: $ => /[^\-<>{}!"'/=\s]+/,
+
+    attribute_name: $ => /[^<>{}"'/=\s]+/,
 
     text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})
