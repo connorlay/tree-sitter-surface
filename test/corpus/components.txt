@@ -8,11 +8,11 @@ Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (start_tag
-      (tag_name))
-    (end_tag
-      (tag_name))))
+  (component
+    (start_component
+      (component_name))
+    (end_component
+      (component_name))))
 
 ================================================================================
 Self-Closing Component
@@ -23,9 +23,9 @@ Self-Closing Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name))))
+  (component
+    (self_closing_component
+      (component_name))))
 
 ================================================================================
 Special Component
@@ -37,11 +37,11 @@ Special Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (start_tag
-      (tag_name))
-    (end_tag
-      (tag_name))))
+  (component
+    (start_component
+      (component_name))
+    (end_component
+      (component_name))))
 
 ================================================================================
 Special Self-Closing Component
@@ -52,9 +52,9 @@ Special Self-Closing Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name))))
+  (component
+    (self_closing_component
+      (component_name))))
 
 ================================================================================
 Markdown Component
@@ -102,12 +102,12 @@ Markdown Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
+  (component
     (start_markdown
-      (tag_name))
+      (component_name))
     (text)
     (end_markdown
-      (tag_name))))
+      (component_name))))
 
 ================================================================================
 Raw Component
@@ -122,9 +122,9 @@ Raw Component
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (start_tag
-      (tag_name))
+  (component
+    (start_component
+      (component_name))
     (tag
       (start_tag
         (tag_name)
@@ -135,8 +135,8 @@ Raw Component
         (expression_value))
       (end_tag
         (tag_name)))
-    (end_tag
-      (tag_name))))
+    (end_component
+      (component_name))))
 
 ================================================================================
 Deeply-Nested Components
@@ -202,143 +202,143 @@ Deeply-Nested Components
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (start_tag
-      (tag_name))
-    (tag
-      (start_tag
-        (tag_name))
-      (tag
-        (start_tag
-          (tag_name))
-        (tag
-          (start_tag
-            (tag_name))
-          (tag
-            (start_tag
-              (tag_name))
-            (tag
-              (start_tag
-                (tag_name))
-              (tag
-                (start_tag
-                  (tag_name))
-                (tag
-                  (start_tag
-                    (tag_name))
-                  (tag
-                    (start_tag
-                      (tag_name))
-                    (tag
-                      (start_tag
-                        (tag_name))
-                      (tag
-                        (start_tag
-                          (tag_name))
-                        (tag
-                          (start_tag
-                            (tag_name))
-                          (tag
-                            (start_tag
-                              (tag_name))
-                            (tag
-                              (start_tag
-                                (tag_name))
-                              (tag
-                                (start_tag
-                                  (tag_name))
-                                (tag
-                                  (start_tag
-                                    (tag_name))
-                                  (tag
-                                    (start_tag
-                                      (tag_name))
-                                    (tag
-                                      (start_tag
-                                        (tag_name))
-                                      (tag
-                                        (start_tag
-                                          (tag_name))
-                                        (tag
-                                          (start_tag
-                                            (tag_name))
-                                          (tag
-                                            (start_tag
-                                              (tag_name))
-                                            (tag
-                                              (start_tag
-                                                (tag_name))
-                                              (tag
-                                                (start_tag
-                                                  (tag_name))
-                                                (tag
-                                                  (start_tag
-                                                    (tag_name))
-                                                  (tag
-                                                    (start_tag
-                                                      (tag_name))
-                                                    (tag
-                                                      (start_tag
-                                                        (tag_name))
-                                                      (tag
-                                                        (start_tag
-                                                          (tag_name))
-                                                        (tag
-                                                          (start_tag
-                                                            (tag_name))
-                                                          (end_tag
-                                                            (tag_name)))
-                                                        (end_tag
-                                                          (tag_name)))
-                                                      (end_tag
-                                                        (tag_name)))
-                                                    (end_tag
-                                                      (tag_name)))
-                                                  (end_tag
-                                                    (tag_name)))
-                                                (end_tag
-                                                  (tag_name)))
-                                              (end_tag
-                                                (tag_name)))
-                                            (end_tag
-                                              (tag_name)))
-                                          (end_tag
-                                            (tag_name)))
-                                        (end_tag
-                                          (tag_name)))
-                                      (end_tag
-                                        (tag_name)))
-                                    (end_tag
-                                      (tag_name)))
-                                  (end_tag
-                                    (tag_name)))
-                                (end_tag
-                                  (tag_name)))
-                              (end_tag
-                                (tag_name)))
-                            (end_tag
-                              (tag_name)))
-                          (end_tag
-                            (tag_name)))
-                        (end_tag
-                          (tag_name)))
-                      (end_tag
-                        (tag_name)))
-                    (end_tag
-                      (tag_name)))
-                  (end_tag
-                    (tag_name)))
-                (end_tag
-                  (tag_name)))
-              (end_tag
-                (tag_name)))
-            (end_tag
-              (tag_name)))
-          (end_tag
-            (tag_name)))
-        (end_tag
-          (tag_name)))
-      (end_tag
-        (tag_name)))
-    (end_tag
-      (tag_name))))
+  (component
+    (start_component
+      (component_name))
+    (component
+      (start_component
+        (component_name))
+      (component
+        (start_component
+          (component_name))
+        (component
+          (start_component
+            (component_name))
+          (component
+            (start_component
+              (component_name))
+            (component
+              (start_component
+                (component_name))
+              (component
+                (start_component
+                  (component_name))
+                (component
+                  (start_component
+                    (component_name))
+                  (component
+                    (start_component
+                      (component_name))
+                    (component
+                      (start_component
+                        (component_name))
+                      (component
+                        (start_component
+                          (component_name))
+                        (component
+                          (start_component
+                            (component_name))
+                          (component
+                            (start_component
+                              (component_name))
+                            (component
+                              (start_component
+                                (component_name))
+                              (component
+                                (start_component
+                                  (component_name))
+                                (component
+                                  (start_component
+                                    (component_name))
+                                  (component
+                                    (start_component
+                                      (component_name))
+                                    (component
+                                      (start_component
+                                        (component_name))
+                                      (component
+                                        (start_component
+                                          (component_name))
+                                        (component
+                                          (start_component
+                                            (component_name))
+                                          (component
+                                            (start_component
+                                              (component_name))
+                                            (component
+                                              (start_component
+                                                (component_name))
+                                              (component
+                                                (start_component
+                                                  (component_name))
+                                                (component
+                                                  (start_component
+                                                    (component_name))
+                                                  (component
+                                                    (start_component
+                                                      (component_name))
+                                                    (component
+                                                      (start_component
+                                                        (component_name))
+                                                      (component
+                                                        (start_component
+                                                          (component_name))
+                                                        (component
+                                                          (start_component
+                                                            (component_name))
+                                                          (end_component
+                                                            (component_name)))
+                                                        (end_component
+                                                          (component_name)))
+                                                      (end_component
+                                                        (component_name)))
+                                                    (end_component
+                                                      (component_name)))
+                                                  (end_component
+                                                    (component_name)))
+                                                (end_component
+                                                  (component_name)))
+                                              (end_component
+                                                (component_name)))
+                                            (end_component
+                                              (component_name)))
+                                          (end_component
+                                            (component_name)))
+                                        (end_component
+                                          (component_name)))
+                                      (end_component
+                                        (component_name)))
+                                    (end_component
+                                      (component_name)))
+                                  (end_component
+                                    (component_name)))
+                                (end_component
+                                  (component_name)))
+                              (end_component
+                                (component_name)))
+                            (end_component
+                              (component_name)))
+                          (end_component
+                            (component_name)))
+                        (end_component
+                          (component_name)))
+                      (end_component
+                        (component_name)))
+                    (end_component
+                      (component_name)))
+                  (end_component
+                    (component_name)))
+                (end_component
+                  (component_name)))
+              (end_component
+                (component_name)))
+            (end_component
+              (component_name)))
+          (end_component
+            (component_name)))
+        (end_component
+          (component_name)))
+      (end_component
+        (component_name)))
+    (end_component
+      (component_name))))

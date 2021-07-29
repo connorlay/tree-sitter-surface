@@ -6,6 +6,7 @@ module.exports = grammar({
 
     _node: $ => choice(
       $.tag,
+      $.component,
       $.text,
       $.expression,
       $.block,
@@ -18,12 +19,21 @@ module.exports = grammar({
         repeat($._node),
         $.end_tag
       ),
-      $.self_closing_tag,
+      $.self_closing_tag
+    ),
+
+    component: $ => choice(
+      seq(
+        $.start_component,
+        repeat($._node),
+        $.end_component
+      ),
+      $.self_closing_component,
       seq(
         $.start_markdown,
         $.text,
         $.end_markdown
-      ),
+      )
     ),
 
     block: $ => seq(
@@ -34,11 +44,12 @@ module.exports = grammar({
 
     start_markdown: $ => seq(
       '<',
-      alias('#Markdown', $.tag_name),
+      alias('#Markdown', $.component_name),
       repeat(
         choice(
           $.attribute, 
-          $.expression
+          $.expression,
+          $.directive
         )
       ),
       '>'
@@ -46,7 +57,7 @@ module.exports = grammar({
 
     end_markdown: $ => seq(
       '</',
-      alias('#Markdown', $.tag_name),
+      alias('#Markdown', $.component_name),
       '>'
     ),
 
@@ -56,7 +67,8 @@ module.exports = grammar({
       repeat(
         choice(
           $.attribute, 
-          $.expression
+          $.expression,
+          $.directive
         )
       ),
       '>'
@@ -74,7 +86,40 @@ module.exports = grammar({
       repeat(
         choice(
           $.attribute, 
-          $.expression
+          $.expression,
+          $.directive
+        )
+      ),
+      '/>'
+    ),
+
+    start_component: $ => seq(
+      '<',
+      $.component_name,
+      repeat(
+        choice(
+          $.attribute, 
+          $.expression,
+          $.directive
+        )
+      ),
+      '>'
+    ),
+
+    end_component: $ => seq(
+      '</',
+      $.component_name,
+      '>'
+    ),
+
+    self_closing_component: $ => seq(
+      '<',
+      $.component_name,
+      repeat(
+        choice(
+          $.attribute, 
+          $.expression,
+          $.directive
         )
       ),
       '/>'
@@ -183,11 +228,23 @@ module.exports = grammar({
       optional(
         seq(
           '=', 
-          $.attribute_value
+          choice(
+            $.attribute_value,
+            $.expression
+          )
         )
       )
     ),
 
+    directive: $ => seq(
+      ':',
+      $.directive_name,
+      '=',
+      choice(
+        $.attribute_value,
+        $.expression
+      )
+    ),
 
     attribute_value: $ => choice(
       /[^<>{}"'=\s]+/,
@@ -200,13 +257,35 @@ module.exports = grammar({
         '"', 
         optional(/[^"]+/), 
         '"'
-      ),
-      $.expression
+      )
     ),
 
-    tag_name: $ => /[^\-<>{}!"'/=\s]+/,
+    tag_name: $ => /[a-z]+[^\-<>{}!"'/=\s]*/,
 
-    attribute_name: $ => /[^<>{}"'/=\s]+/,
+    component_name: $ => /[A-Z#:]+[^\-<>{}!"'/=\s]*/,
+
+    attribute_name: $ => /[^<>{}"'/=\s:]+/,
+
+    directive_name: $ => choice(
+      "if",
+      "show",
+      "let",
+      "args",
+      "values",
+      "hook",
+      "on-click",
+      "on-capture-click",
+      "on-blur",
+      "on-focus",
+      "on-change",
+      "on-submit",
+      "on-keydown",
+      "on-keyup",
+      "on-window-focus",
+      "on-window-blur",
+      "on-window-keydown",
+      "on-window-keyup",
+    ),
 
     text: $ => /[^<>{}\s]([^<>{}]*[^<>{}\s])?/,
 }})

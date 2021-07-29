@@ -7,9 +7,9 @@ Unquoted Attribute
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name)
+  (component
+    (self_closing_component
+      (component_name)
       (attribute
         (attribute_name)
         (attribute_value)))))
@@ -23,9 +23,9 @@ Single-Quoted Attribute
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name)
+  (component
+    (self_closing_component
+      (component_name)
       (attribute
         (attribute_name)
         (attribute_value)))))
@@ -39,9 +39,9 @@ Double-Quoted Attribute
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name)
+  (component
+    (self_closing_component
+      (component_name)
       (attribute
         (attribute_name)
         (attribute_value)))))
@@ -55,11 +55,10 @@ Expression Attribute
 --------------------------------------------------------------------------------
 
 (fragment
-  (tag
-    (self_closing_tag
-      (tag_name)
+  (component
+    (self_closing_component
+      (component_name)
       (attribute
         (attribute_name)
-        (attribute_value
-          (expression
-            (expression_value)))))))
+        (expression
+          (expression_value))))))
