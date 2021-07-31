@@ -139,65 +139,14 @@ Raw Component
       (component_name))))
 
 ================================================================================
-Deeply-Nested Components
+Nested Components
 ================================================================================
 
-<Foo>
-  <Foo>
-    <Foo>
-      <Foo>
-        <Foo>
-          <Foo>
-            <Foo>
-              <Foo>
-                <Foo>
-                  <Foo>
-                    <Foo>
-                      <Foo>
-                        <Foo>
-                          <Foo>
-                            <Foo>
-                              <Foo>
-                                <Foo>
-                                  <Foo>
-                                    <Foo>
-                                      <Foo>
-                                        <Foo>
-                                          <Foo>
-                                            <Foo>
-                                              <Foo>
-                                                <Foo>
-                                                  <Foo>
-                                                    <Foo>
-                                                      <Foo>
-                                                      </Foo>
-                                                    </Foo>
-                                                  </Foo>
-                                                </Foo>
-                                              </Foo>
-                                            </Foo>
-                                          </Foo>
-                                        </Foo>
-                                      </Foo>
-                                    </Foo>
-                                  </Foo>
-                                </Foo>
-                              </Foo>
-                            </Foo>
-                          </Foo>
-                        </Foo>
-                      </Foo>
-                    </Foo>
-                  </Foo>
-                </Foo>
-              </Foo>
-            </Foo>
-          </Foo>
-        </Foo>
-      </Foo>
-    </Foo>
-  </Foo>
-</Foo>
+<Root>
+  <Grid>
+    <Card />
+  </Card>
+</Root>
 
 --------------------------------------------------------------------------------
 
@@ -209,134 +158,7 @@ Deeply-Nested Components
       (start_component
         (component_name))
       (component
-        (start_component
-          (component_name))
-        (component
-          (start_component
-            (component_name))
-          (component
-            (start_component
-              (component_name))
-            (component
-              (start_component
-                (component_name))
-              (component
-                (start_component
-                  (component_name))
-                (component
-                  (start_component
-                    (component_name))
-                  (component
-                    (start_component
-                      (component_name))
-                    (component
-                      (start_component
-                        (component_name))
-                      (component
-                        (start_component
-                          (component_name))
-                        (component
-                          (start_component
-                            (component_name))
-                          (component
-                            (start_component
-                              (component_name))
-                            (component
-                              (start_component
-                                (component_name))
-                              (component
-                                (start_component
-                                  (component_name))
-                                (component
-                                  (start_component
-                                    (component_name))
-                                  (component
-                                    (start_component
-                                      (component_name))
-                                    (component
-                                      (start_component
-                                        (component_name))
-                                      (component
-                                        (start_component
-                                          (component_name))
-                                        (component
-                                          (start_component
-                                            (component_name))
-                                          (component
-                                            (start_component
-                                              (component_name))
-                                            (component
-                                              (start_component
-                                                (component_name))
-                                              (component
-                                                (start_component
-                                                  (component_name))
-                                                (component
-                                                  (start_component
-                                                    (component_name))
-                                                  (component
-                                                    (start_component
-                                                      (component_name))
-                                                    (component
-                                                      (start_component
-                                                        (component_name))
-                                                      (component
-                                                        (start_component
-                                                          (component_name))
-                                                        (component
-                                                          (start_component
-                                                            (component_name))
-                                                          (end_component
-                                                            (component_name)))
-                                                        (end_component
-                                                          (component_name)))
-                                                      (end_component
-                                                        (component_name)))
-                                                    (end_component
-                                                      (component_name)))
-                                                  (end_component
-                                                    (component_name)))
-                                                (end_component
-                                                  (component_name)))
-                                              (end_component
-                                                (component_name)))
-                                            (end_component
-                                              (component_name)))
-                                          (end_component
-                                            (component_name)))
-                                        (end_component
-                                          (component_name)))
-                                      (end_component
-                                        (component_name)))
-                                    (end_component
-                                      (component_name)))
-                                  (end_component
-                                    (component_name)))
-                                (end_component
-                                  (component_name)))
-                              (end_component
-                                (component_name)))
-                            (end_component
-                              (component_name)))
-                          (end_component
-                            (component_name)))
-                        (end_component
-                          (component_name)))
-                      (end_component
-                        (component_name)))
-                    (end_component
-                      (component_name)))
-                  (end_component
-                    (component_name)))
-                (end_component
-                  (component_name)))
-              (end_component
-                (component_name)))
-            (end_component
-              (component_name)))
-          (end_component
-            (component_name)))
-        (end_component
+        (self_closing_component
           (component_name)))
       (end_component
         (component_name)))
