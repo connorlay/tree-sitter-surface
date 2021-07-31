@@ -1,4 +1,6 @@
-Tree-sitter Surface 🌲
-======================
+Tree-sitter Surface
+===================
 
-Experimental Tree-sitter grammar for the Surface [templating language](https://surface-ui.org/template_syntax). Only supports the new 0.5 syntax.
+[Tree-sitter] (https://tree-sitter.github.io/tree-sitter/) grammar and parser for [Surface](https://surface-ui.org), the server-side rendering component library for [Phoenix](https://www.phoenixframework.org/).
+
+Supports the Surface 0.5+ template syntax.
