@@ -18,14 +18,13 @@
         {
           "type": "expression",
           "named": true
+        },
+        {
+          "type": "quoted_attribute_value",
+          "named": true
         }
       ]
     }
-  },
-  {
-    "type": "attribute_value",
-    "named": true,
-    "fields": {}
   },
   {
     "type": "block",
@@ -158,6 +157,10 @@
         {
           "type": "expression",
           "named": true
+        },
+        {
+          "type": "quoted_attribute_value",
+          "named": true
         }
       ]
     }
@@ -277,6 +280,21 @@
         },
         {
           "type": "text",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "quoted_attribute_value",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "attribute_value",
           "named": true
         }
       ]
@@ -565,6 +583,10 @@
   },
   {
     "type": "attribute_name",
+    "named": true
+  },
+  {
+    "type": "attribute_value",
     "named": true
   },
   {
