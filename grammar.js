@@ -229,6 +229,7 @@ module.exports = grammar({
         seq(
           '=', 
           choice(
+            $.quoted_attribute_value,
             $.attribute_value,
             $.expression
           )
@@ -242,23 +243,25 @@ module.exports = grammar({
       '=',
       choice(
         $.attribute_value,
+        $.quoted_attribute_value,
         $.expression
       )
     ),
 
-    attribute_value: $ => choice(
-      /[^<>{}"'=\s]+/,
+    quoted_attribute_value: $ => choice(
       seq(
         "'", 
-        optional(/[^']+/), 
+        optional(alias(/[^']+/, $.attribute_value)), 
         "'"
       ),
       seq(
         '"', 
-        optional(/[^"]+/), 
+        optional(alias(/[^"]+/, $.attribute_value)), 
         '"'
       )
     ),
+
+    attribute_value: $ => /[^<>{}"'=\s]+/,
 
     tag_name: $ => /[a-z]+[^\-<>{}!"'/=\s]*/,
 

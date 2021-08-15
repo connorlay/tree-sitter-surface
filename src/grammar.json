@@ -680,6 +680,10 @@
                   "members": [
                     {
                       "type": "SYMBOL",
+                      "name": "quoted_attribute_value"
+                    },
+                    {
+                      "type": "SYMBOL",
                       "name": "attribute_value"
                     },
                     {
@@ -721,19 +725,19 @@
             },
             {
               "type": "SYMBOL",
+              "name": "quoted_attribute_value"
+            },
+            {
+              "type": "SYMBOL",
               "name": "expression"
             }
           ]
         }
       ]
     },
-    "attribute_value": {
+    "quoted_attribute_value": {
       "type": "CHOICE",
       "members": [
-        {
-          "type": "PATTERN",
-          "value": "[^<>{}\"'=\\s]+"
-        },
         {
           "type": "SEQ",
           "members": [
@@ -745,8 +749,13 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "PATTERN",
-                  "value": "[^']+"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^']+"
+                  },
+                  "named": true,
+                  "value": "attribute_value"
                 },
                 {
                   "type": "BLANK"
@@ -770,8 +779,13 @@
               "type": "CHOICE",
               "members": [
                 {
-                  "type": "PATTERN",
-                  "value": "[^\"]+"
+                  "type": "ALIAS",
+                  "content": {
+                    "type": "PATTERN",
+                    "value": "[^\"]+"
+                  },
+                  "named": true,
+                  "value": "attribute_value"
                 },
                 {
                   "type": "BLANK"
@@ -785,6 +799,10 @@
           ]
         }
       ]
+    },
+    "attribute_value": {
+      "type": "PATTERN",
+      "value": "[^<>{}\"'=\\s]+"
     },
     "tag_name": {
       "type": "PATTERN",

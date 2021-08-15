@@ -82,7 +82,8 @@ Args Directive
       (tag_name)
       (directive
         (directive_name)
-        (attribute_value))
+        (quoted_attribute_value
+          (attribute_value)))
       (directive
         (directive_name)
         (expression
@@ -105,7 +106,8 @@ Hook Directive
       (component_name)
       (directive
         (directive_name)
-        (attribute_value)))))
+        (quoted_attribute_value
+          (attribute_value))))))
 
 ================================================================================
 On-Click Directive

@@ -4,6 +4,8 @@
 
 Supports the Surface 0.5+ template syntax.
 
+For HEEx support, see [tree-sitter-heex](https://github.com/connorlay/tree-sitter-heex).
+
 ## Features
 
 Parsing support for the following nodes:
